@@ -1,0 +1,66 @@
+[
+  {
+    "question": "What is Aliconnect?",
+    "answer": "Aliconnect is an all-in-one platform that connects vendors, professionals, and businesses, offering a seamless marketplace, networking tools, and AI-powered automation."
+  },
+  {
+    "question": "How do I sign up on Aliconnect?",
+    "answer": "You can sign up by visiting www.aliconnects.com and clicking on the ‘Sign Up’ button. Follow the prompts to create your account."
+  },
+  {
+    "question": "How do I login to Aliconnect?",
+    "answer": "You can login by visiting www.aliconnects.com and clicking on the ‘login’ button. Follow the prompts to login to your account."
+  },
+  {
+    "question": "What services does Aliconnect offer?",
+    "answer": "Aliconnect provides an online marketplace, business automation tools, AI support, vendor networking, payment processing, and logistics integration."
+  },
+  {
+    "question": "How do I list my products?",
+    "answer": "Go to your dashboard, click on ‘Add Product,’ enter product details, upload images, and publish your listing."
+  },
+  {
+    "question": "How do I receive payments?",
+    "answer": "Aliconnect integrates with multiple payment gateways like PayPal, Stripe, and local banking options. Set up your preferred payment method in the ‘Settings’ section."
+  },
+  {
+    "question": "How can I increase my sales on Aliconnect?",
+    "answer": "Optimize your product listings with high-quality images and detailed descriptions, leverage Aliconnect’s marketing tools, and participate in vendor training webinars."
+  },
+  {
+    "question": "How do I track my order?",
+    "answer": "Visit the ‘Orders’ section on your dashboard, enter your order ID, and view the real-time tracking status."
+  },
+  {
+    "question": "Can I return a product?",
+    "answer": "Yes. Check the seller’s return policy on the product page and initiate a return request from your account."
+  },
+  {
+    "question": "How do I contact customer support?",
+    "answer": "You can chat with Alixia AI for quick assistance or reach our support team via email at support@aliconnect.com."
+  },
+  {
+    "question": "How do I market my store effectively?",
+    "answer": "Use social media promotions, email marketing, SEO optimization, and leverage Aliconnect’s advertising tools."
+  },
+  {
+    "question": "What are the best-selling product categories?",
+    "answer": "Trending categories include fashion, electronics, home essentials, and digital services."
+  },
+  {
+    "question": "Can you suggest a pricing strategy?",
+    "answer": "Analyze competitors’ pricing, consider market demand, and offer promotions to attract customers."
+  },
+  {
+    "question": "Why is my account restricted?",
+    "answer": "Your account may be restricted due to policy violations, incomplete verification, or suspicious activity. Contact support for assistance."
+  },
+  {
+    "question": "How do I reset my password?",
+    "answer": "Click on ‘Forgot Password’ on the login page, enter your registered email, and follow the reset instructions."
+  },
+  {
+    "question": "Why isn’t my product appearing in search results?",
+    "answer": "Ensure that your listing meets Aliconnect’s guidelines, has relevant keywords, and is properly categorized."
+  }
+]

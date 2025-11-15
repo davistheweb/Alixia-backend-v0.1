@@ -1,41 +1,44 @@
-import requests
+from functools import lru_cache
+import httpx
 from bs4 import BeautifulSoup
+from functools import lru_cache
+# import asyncio
 
-def load_products(user_search):
-    aliconnects_store_url = f"https://store.aliconnects.com/?product_cat=0&s={user_search}&post_type=product"
-    response = requests.get(aliconnects_store_url)
-    
-    if response.status_code != 200:
-        print("Failed to load the page.")
-        return
+async_client = httpx.AsyncClient(timeout=5)
 
-    soup = BeautifulSoup(response.text, "html.parser")
-    
-    # Find all relevant tags (without relying on class names)
-    tags = soup.find_all(["h2", "p", "img"], limit=60)
+@lru_cache(maxsize=50)
+def cached_products_html(search: str, html: str):
+    """Use caching for parsed results only."""
+    return parse_products(html)
+
+
+async def load_products(search: str):
+    url = f"https://store.aliconnects.com/?product_cat=0&s={search}&post_type=product"
+
+    r = await async_client.get(url)
+    if r.status_code != 200:
+        return ""
+
+    return cached_products_html(search, r.text)
+def parse_products(html: str):
+    soup = BeautifulSoup(html, "html.parser")
+
+    cards = soup.select("ul.products li.product")[:6]
 
     products = []
-    product = {}
+    for c in cards:
+        name = c.select_one("h2").get_text(strip=True) if c.select_one("h2") else ""
+        price = c.select_one(".price").get_text(strip=True) if c.select_one(".price") else ""
+        img = c.select_one("img")["src"] if c.select_one("img") else ""
 
-    for tag in tags:
-        if tag.name == "h2" and "name" not in product:
-            product["name"] = tag.text.strip()
-        elif tag.name == "p" and "price" not in product:
-            product["price"] = tag.text.strip()
-        elif tag.name == "img" and "img" not in product:
-            product["img"] = tag.get("src")
-        
-        # If we have all 3 keys, we assume it's a full product and store it
-        if all(k in product for k in ("name", "price", "img")):
-            products.append(product)
-            product = {}  # reset for next product
-
-    # Render each product like a frontend div
-    for p in products:
-        return (f"""
+        products.append(
+            f"""
 <div class="product">
-  <img src="{p['img']}" alt="{p['name']}" />
-  <h2>{p['name']}</h2>
-  <p>{p['price']}</p>
+    <img src="{img}" alt="{name}" />
+    <h2>{name}</h2>
+    <p>{price}</p>
 </div>
-""")
+"""
+        )
+
+    return "\n".join(products)

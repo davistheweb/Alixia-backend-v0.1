@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from utils.chat import user_chat
+from utils.chat import Alixia_Chat
 
 load_dotenv()
 
@@ -33,7 +33,7 @@ async def chatWithAlixiaAi(req: chatAlixiaAIRequest):
         return JSONResponse(content={"error": 'No text provided' }, status_code=400)
     try:
         print('Message: ', req.message)
-        genai_response = user_chat(text)
+        genai_response = await Alixia_Chat(text)
         return JSONResponse(content={'response': genai_response}, status_code=200)
     except Exception as e:
         print(str(e))
